@@ -112,7 +112,6 @@ function checkStudentInfo() {
     
                 // Update the content of the container
                 document.getElementById('studentInfoContainer').innerHTML = htmlContent;
-
             } else {
                 console.error('Invalid or missing data in the server response.');
             }
@@ -121,5 +120,18 @@ function checkStudentInfo() {
             console.error('Error:', error);
         });
     }
-    
+}
+function showForm(formId, headingText) {
+    // Hide all forms initially
+    document.getElementById('initial').style.display = 'none';
+    document.getElementById('addStudentForm').style.display = 'none';
+    document.getElementById('updateStudentForm').style.display = 'none';
+    document.getElementById('deleteStudentForm').style.display = 'none';
+    document.getElementById('checkStudentForm').style.display = 'none';
+
+    // Show the selected form
+    document.getElementById(formId).style.display = 'block';
+
+    // Update the heading text
+    document.getElementById('formHeading').innerText = headingText;
 }
