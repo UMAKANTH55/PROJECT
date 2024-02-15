@@ -17,7 +17,7 @@ function addStudent() {
         course: course
     };
 
-    // Make AJAX request to Flask API endpoint
+    // Make fetch request to Flask API endpoint
     fetch('/student/', {
         method: 'POST',
         headers: {
@@ -70,10 +70,10 @@ function addStudent() {
         }
     }
     function deleteStudent() {
-        var id = document.getElementById('delete_student_id').value; // Assuming you have an input with id 'student_id' for the student ID
+        var id = document.getElementById('delete_student_id').value; 
         document.getElementById('delete_student_id').value = '';
         if (id) {
-            fetch('/student/' + id, {  // Assuming your Flask route for deleting is '/student/<id>'
+            fetch('/student/' + id, {  
                 method: 'DELETE',
             })
             .then(response => response.json())
