@@ -6,7 +6,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 app = Flask(__name__)
 
 #Configuring the mysql database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://ADMIN:umakanth_9@localhost:3306/project'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://ADMIN:umakanth_9@localhost:3306/data'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Create an instance of the Flask-RESTx API

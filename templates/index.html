@@ -4,59 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: skyblue;
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-    </style>
-</head>
+    <link rel="stylesheet" href="../static/style.css">
 <body>
     <h1>Student Management System</h1>
-
+    <hr>
+    <h2>Add Student Info</h2>
     <form id="addStudentForm">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
@@ -67,61 +19,39 @@
         <label for="course">Course:</label>
         <input type="text" id="course" name="course" required><br>
 
-        <button type="button" onclick="addStudent()">Add Student</button>
+        <button type="button" onclick="addStudent()">Add Student Info</button>
     </form>
-
     <hr>
+    <h2>Update Student Info</h2>
+    <form id="updateStudentForm">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required><br>
+        <label for="update_name">Name:</label>
+        <input type="text" id="update_name" name="name" required><br>
 
-    <h2>Student List</h2>
-    <ul id="studentList">
-        <!-- Student list will be dynamically populated here -->
-    </ul>
+        <label for="update_roll_no">Roll No:</label>
+        <input type="text" id="update_roll_no" name="roll_no" required><br>
 
-    <script>
-        function addStudent() {
-            // Get form values
-            var name = document.getElementById('name').value;
-            var rollNo = document.getElementById('roll_no').value;
-            var course = document.getElementById('course').value;
+        <label for="update_course">Course:</label>
+        <input type="text" id="update_course" name="course" required><br>
 
-            // Validate and add to the list
-            if (name && rollNo && course) {
-                var studentItem = document.createElement('li');
-                studentItem.textContent = 'Name: ' + name + ', Roll No: ' + rollNo + ', Course: ' + course;
-                document.getElementById('studentList').appendChild(studentItem);
-
-                // Clear form fields
-                document.getElementById('name').value = '';
-                document.getElementById('roll_no').value = '';
-                document.getElementById('course').value = '';
-
-                if (name && rollNo && course) {
-            var studentData = {
-                name: name,
-                roll_no: rollNo,
-                course: course
-            };
-
-            // Make AJAX request to Flask API endpoint
-            fetch('/student/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(studentData),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-            }
-        
-        }
-    </script>
+        <button type="button" onclick="updateStudent()">Update Student Info</button>
+    </form>
+    <hr>
+    <h2>Delete Student Info</h2>
+    <form id="deleteStudentForm">
+        <label for="delete_student_id">Student ID:</label>
+        <input type="text" id="delete_student_id" name="student_id" required><br>
+        <button type="button" onclick="deleteStudent()">Delete Student Info</button>
+    </form>
+    <hr>
+    <h2>Check Student Info</h2>
+    <form id="checkStudentForm">
+       <label for="student_id_check">Student ID:</label>
+       <input type="text" id="student_id_check" name="student_id" required>
+       <button type="button" onclick="checkStudentInfo()">Check Student Info</button>
+    </form>
+    <div id="studentInfoContainer"></div>
+    <script src="../static/script.js"></script>
 </body>
 </html>
-
